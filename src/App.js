@@ -1,24 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect} from 'react';
+import MediaCard from './Components/Card.js';
 
 function App() {
+
+  const [post, setPost] = useState([]);
+
+  useEffect(() => {
+    fetch ('https://private-c3edb-postsmock.apiary-mock.com/posts')
+    .then(res => {
+      return res.json();
+    })
+    .then(data => {
+      setPost(data); 
+      console.log(data);    
+    })
+  }, [])
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        {/* {post.map((postItem) => {
+          return <li key = {postItem.id}>{postItem.title}</li>
+        })} */}
+        {post.map((postItem)=> {
+          return <MediaCard 
+          key={postItem.id} 
+          title={postItem.title}
+          shortDescription={postItem.shortDescription}
+          category={postItem.category}
+          ></MediaCard>
+        })} 
     </div>
   );
 }
