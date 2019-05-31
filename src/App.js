@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect} from 'react';
+import MenuBar from './Components/MenuBar';
+import Posts from './Components/Posts';
+
 
 function App() {
+
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    fetch ('https://private-c3edb-postsmock.apiary-mock.com/posts')
+    .then(res => {
+      return res.json();
+    })
+    .then(data => {
+      setPosts(data); 
+    })
+  }, [])
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div className="Menu">
+        <MenuBar posts = {posts}
+        setPosts={setPosts}/>
+        <Posts posts = {posts.filter((postsfltr) => postsfltr.category == 'travel')} />
+
+        {/* Note: setear estado para filtro y funcion para All*/}
+      </div>
     </div>
   );
 }
 
 export default App;
+
+{/* {post.map((props)=> {
+  return (
+    <MediaCard props={props}/>
+  )
+})}  */}
