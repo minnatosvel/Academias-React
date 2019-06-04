@@ -1,6 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import MenuBar from './Components/MenuBar';
 import Posts from './Components/Posts';
+import Header from './Styles/Header.css';
+import AddPost from './Components/AddPost';
+
 
 
 function App() {
@@ -13,7 +16,7 @@ function App() {
       return res.json();
     })
     .then(data => {
-      setPosts(data); 
+      setPosts(data);
     })
   }, [])
 
@@ -21,9 +24,15 @@ function App() {
   return (
     <div>
       <div className="Menu">
-        <MenuBar posts = {posts}
+        <div>
+          <h2 className='subtitle' align="center">Making Life Easier</h2>
+          <h1 className='title' align="center">Discovering the World</h1>
+        </div>
+        <AddPost posts={posts}/>
+        <MenuBar posts={posts}
         setPosts={setPosts}/>
-        <Posts posts = {posts.filter((postsfltr) => postsfltr.category == 'travel')} />
+        <Posts posts={posts} />
+        {/* <Posts posts = {posts.filter((postsfltr) => postsfltr.category === 'lifestyle')} /> */}
 
         {/* Note: setear estado para filtro y funcion para All*/}
       </div>
@@ -33,8 +42,3 @@ function App() {
 
 export default App;
 
-{/* {post.map((props)=> {
-  return (
-    <MediaCard props={props}/>
-  )
-})}  */}
