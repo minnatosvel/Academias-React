@@ -5,6 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
+import '../Styles/Menu.css'
 //import MenuIcon from '@material-ui/icons/Menu';
 
 // function clickedFilter(){
@@ -35,8 +36,8 @@ function MenuBar(props) {
   return (
 
     <div>
-      <AppBar position="static">
-        <Toolbar>
+      <AppBar className="appbar" position="static">
+        <Toolbar className="toolbar" centered>
           <Button 
           className="menuBtn" 
           name='All'

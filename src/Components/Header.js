@@ -2,9 +2,12 @@ import React from 'react'
 
 function Header(){
 
-<h1>Making Life Easier</h1>
-<h2>Discovering the World</h2>
-
+    return(
+        <div>
+            <h1>Making Life Easier</h1>
+            <h2>Discovering the World</h2>
+        </div>
+    )
 }
 
-export deafult Header();
+export default Header();

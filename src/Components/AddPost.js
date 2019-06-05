@@ -86,17 +86,10 @@ const useStylesCancelBtn = makeStyles(theme => ({
 
 
 function AddPost(props) {
+
   const [open, setOpen] = React.useState(false);
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
 
   const [values, setValues] = React.useState({
     title: '',
@@ -105,6 +98,15 @@ function AddPost(props) {
     category: '',
     url: ''
   });
+
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const categories = [
     {
@@ -139,9 +141,10 @@ function AddPost(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    //props.handleText(state)
+    // props.handleText(state)
     //props.history.push('/Post')
   }
+
 
   const classes = useStyles();
 
@@ -169,12 +172,15 @@ function AddPost(props) {
         onClose={handleClose}
       >
         <div style={modalStyle} className={classes.paper}>
-          <form onSubmit={handleSubmit} className={classesInput.container} noValidate autoComplete="off">
+          <form onSubmit={(event) => props.handleSubmit(event)} className={classesInput.container} noValidate autoComplete="off">
             <TextField
             required
             id="standard-required"
             label="Title"
+            name="title"
             defaultValue=""
+            value={props.title}
+            onChange={(event) => props.handleChange(event)}
             className={classesInput.textField}
             margin="normal"
             />
@@ -222,7 +228,7 @@ function AddPost(props) {
               className={classesInput.textField}
               margin="normal"
             />
-            <Button color="primary" className={classesCancelBtn.button}>
+            <Button color="primary" className={classesCancelBtn.button} onClick={handleClose}>
               Cancel
             </Button>
             <Button variant="contained" color="primary" className={classesSaveBtn.button}>

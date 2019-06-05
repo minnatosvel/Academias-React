@@ -24,7 +24,7 @@ function CardB(props) {
   
     return props.posts.map((post)=> ( 
       <Grid item xs={12} sm={6}>
-        <Card style={useStyle}>
+        <Card style={useStyle} key={post.id}>
           <CardActionArea>
             <CardMedia
               component="img" height="360px" src={post.image} 
