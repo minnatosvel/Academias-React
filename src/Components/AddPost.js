@@ -173,6 +173,7 @@ function AddPost(props) {
       >
         <div style={modalStyle} className={classes.paper}>
           <form onSubmit={(event) => props.handleSubmit(event)} className={classesInput.container} noValidate autoComplete="off">
+            <span>Create Post</span>
             <TextField
             required
             id="standard-required"
