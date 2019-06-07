@@ -40,10 +40,10 @@ function CardB(props) {
                 {post.category}
               </Typography>
               <Button size="small" color="primary">
-                Share
+                Edit
               </Button>
               <Button size="small" color="primary">
-                Learn More
+                Erase
               </Button>
             </CardContent>
           </CardActionArea>

@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import {BrowserRouter as Router, Route } from 'react-router-dom'
+import {BrowserRouter as Router } from 'react-router-dom'
 import MenuBar from './Components/MenuBar';
 import Posts from './Components/Posts';
-import Header from './Styles/Header.css';
+import Header from './Components/Header';
 import AddPost from './Components/AddPost';
 
 
@@ -34,14 +34,12 @@ function App() {
 
    function handleSubmitPost(newPost) {
     setPosts([...posts, newPost]);
-      console.log(newPost);
     }
 
   return (
     <div className="main-container">
       <div>
-        <h2 className='subtitle' align="center">Making Life Easier</h2>
-        <h1 className='title' align="center">Discovering the World</h1>
+        <Header></Header>
       </div>
       <switch>
         <Router>

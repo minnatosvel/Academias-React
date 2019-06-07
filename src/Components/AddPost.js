@@ -1,11 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import Fab from '@material-ui/core/Fab';
-import clsx from 'clsx';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 
@@ -175,7 +173,9 @@ function AddPost(props) {
         onClose={handleClose}
       >
         <div style={modalStyle} className={classes.paper}>
-          <form onSubmit={(event) => handleSubmit(event)} className={classesInput.container} noValidate autoComplete="off">
+          <form onSubmit={(event) => handleSubmit(event)} 
+          className={classesInput.container} 
+          noValidate autoComplete="off">
             <p>Create Post</p>
             <TextField
             required

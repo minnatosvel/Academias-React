@@ -1,6 +1,5 @@
 import React from 'react';
 import '../Styles/Menu.css'
-//import MenuIcon from '@material-ui/icons/Menu';
 
 function MenuBar(props) {
 
@@ -10,7 +9,7 @@ function MenuBar(props) {
 
   return (
 
-    <div>
+    <div align='center'>
       <button 
       className="menuBtn" 
       name='All'
