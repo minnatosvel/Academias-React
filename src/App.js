@@ -32,6 +32,10 @@ function App() {
     }
   }
 
+   function handleSubmitPost(newPost) {
+    setPosts([...posts, newPost]);
+      console.log(newPost);
+    }
 
   return (
     <div className="main-container">
@@ -42,11 +46,12 @@ function App() {
       <switch>
         <Router>
           <div className="post-container">
-            <AddPost posts={posts}/>
+            <AddPost posts={posts} handleAddPost={handleSubmitPost}/>
             <MenuBar posts={posts}
             handleSelectedFilter={filterFnctn}/>
             <Posts posts={posts} 
-            handleSelectedCategoryFltr={setFilterCategory}/>
+            handleSelectedCategoryFltr={setFilterCategory}
+            />
           </div>
         </Router>
       </switch>

@@ -88,10 +88,9 @@ const useStylesCancelBtn = makeStyles(theme => ({
 function AddPost(props) {
 
   const [open, setOpen] = React.useState(false);
-  // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
 
-  const [values, setValues] = React.useState({
+  const [values, setValues] = useState({
     title: '',
     shortDescription: '',
     description: '',
@@ -141,9 +140,13 @@ function AddPost(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    // props.handleText(state)
-    //props.history.push('/Post')
+    props.handleAddPost(values);
+
+
+    // props.handleText(state    //props.history.push('/Post')
   }
+
+  
 
 
   const classes = useStyles();
@@ -172,8 +175,8 @@ function AddPost(props) {
         onClose={handleClose}
       >
         <div style={modalStyle} className={classes.paper}>
-          <form onSubmit={(event) => props.handleSubmit(event)} className={classesInput.container} noValidate autoComplete="off">
-            <span>Create Post</span>
+          <form onSubmit={(event) => handleSubmit(event)} className={classesInput.container} noValidate autoComplete="off">
+            <p>Create Post</p>
             <TextField
             required
             id="standard-required"
@@ -181,7 +184,7 @@ function AddPost(props) {
             name="title"
             defaultValue=""
             value={props.title}
-            onChange={(event) => props.handleChange(event)}
+            onChange={handleChange('title')}
             className={classesInput.textField}
             margin="normal"
             />
@@ -189,7 +192,10 @@ function AddPost(props) {
               required
               id="standard-required"
               label="Short Description"
+              name="shortDescription"
               defaultValue=""
+              value={props.shortDescription}
+              onChange={handleChange('shortDescription')}
               className={classesInput.textField}
               margin="normal"
             />
@@ -197,7 +203,10 @@ function AddPost(props) {
               required
               id="standard-required"
               label="Description"
+              name="description"
               defaultValue=""
+              value={props.description}
+              onChange={handleChange('description')}
               className={classesInput.textField}
               margin="normal"
             />
@@ -226,13 +235,16 @@ function AddPost(props) {
               id="standard-required"
               label="Image URL"
               defaultValue=""
+              name="image"
+              value="https://source.unsplash.com/random"
+              onChange={handleChange('image')}
               className={classesInput.textField}
               margin="normal"
             />
             <Button color="primary" className={classesCancelBtn.button} onClick={handleClose}>
               Cancel
             </Button>
-            <Button variant="contained" color="primary" className={classesSaveBtn.button}>
+            <Button variant="contained" color="primary" className={classesSaveBtn.button} onClick={handleSubmit}>
               Save
             </Button>
           </form>
